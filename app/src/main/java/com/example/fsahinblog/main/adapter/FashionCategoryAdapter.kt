@@ -1,5 +1,6 @@
 package com.example.fsahinblog.main.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,8 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fsahinblog.R
+import com.example.fsahinblog.main.model.parentCategory.CategoryListItem
 
-class FashionCategoryAdapter(private val fashionList:List<String>) : RecyclerView.Adapter<FashionCategoryAdapter.ViewHolder>() {
+class FashionCategoryAdapter(val context:Context, val list:List<CategoryListItem>) : RecyclerView.Adapter<FashionCategoryAdapter.ViewHolder>() {
 
 
 
@@ -19,12 +21,23 @@ class FashionCategoryAdapter(private val fashionList:List<String>) : RecyclerVie
 
     override fun onBindViewHolder(holder: FashionCategoryAdapter.ViewHolder, position: Int) {
 
+//        holder.icon=list[position].image
+        holder.fashion_text.text=list!!.get(position).name
     }
 
-    override fun getItemCount()=fashionList.size
+    override fun getItemCount()=list.size
+
     class ViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        val icon:ImageView=itemView.findViewById(R.id.icon_iv)
-        val text:TextView=itemView.findViewById(R.id.fashion_item)
+//        var icon:TextView
+//        var text:TextView
+        var icon:ImageView=itemView.findViewById(R.id.icon_iv)
+        var fashion_text:TextView=itemView.findViewById(R.id.fashion_item)
+//        init {
+//            icon=itemView.icon_iv
+//            text=itemView.fashion_item
+//
+//        }
+
     }
 
 
